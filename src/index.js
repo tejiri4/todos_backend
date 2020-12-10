@@ -1,7 +1,8 @@
 import express from 'express';
-import v1Router from 'routes'
+import v1Router from 'routes';
 
-const app = express() // the main app
+// the main app
+const app = express() 
 
 app.use(express.json())
 app.use(express.urlencoded())
