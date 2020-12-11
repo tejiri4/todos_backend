@@ -128,9 +128,14 @@ describe('user', () => {
     const mock = jest.spyOn(User, 'findById');
 
     mock.mockImplementation((id) => {
+
       return {
         ...users.find(user => user._id === id),
-        updateOne: jest.fn()
+        updateOne: () => {
+          const userIndex = users.findIndex((user => user._id === id));
+
+          users[userIndex] = { ...users[userIndex], ...modifiedUser }
+        }
       }
     });
 
@@ -174,7 +179,11 @@ describe('user', () => {
     mock.mockImplementation((id) => {
       return {
         ...users.find(user => user._id === id),
-        deleteOne: jest.fn()
+        deleteOne: () => {
+          const userIndex = users.findIndex((user => user._id === id));
+
+          users.splice(userIndex, 1);
+        }
       }
     });
 

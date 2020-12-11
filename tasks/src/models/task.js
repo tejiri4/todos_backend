@@ -2,21 +2,21 @@ import mongoose from 'mongoose';
 
 const Schema = mongoose.Schema;
 
-const todoSchema = new Schema({
+const taskSchema = new Schema({
 	description: {
 		type: String,
 		required: true
-    },
-    state: {
+  },
+  state: {
 		type: String,
 		required: true
-    },
-    user_id: {
+  },
+  user_id: {
 		type: String,
 		required: true
 	}
 }, { timestamps: true })
 
-const Todo = mongoose.model('Todo', todoSchema);
+const Task = mongoose.model('Task', taskSchema);
 
-export default Todo;
+export default Task;

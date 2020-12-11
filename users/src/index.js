@@ -11,7 +11,7 @@ app.use('/v1', v1Router)
 
 app.get('/', (req, res) => {
   res.status(200).json({
-    message: 'Welcome to Todos App.'
+    message: 'Welcome to User App.'
   }) 
 })
 
