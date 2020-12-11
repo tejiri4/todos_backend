@@ -10,11 +10,8 @@ const createTodo = async (req, res) => {
 		// check if user exist
 		if(!user) return res.status(400).json({ error: messages.userNotFound });
 
-		// create a new todo instance
-    const todo = new Todo({ ...req.filtered, state: 'todo' });
-
-		// saves new todo to database
-		const newTodo = await todo.save();
+		// create todo
+		const newTodo = await Todo.create({ ...req.filtered, state: 'todo' });
 
 		return res.status(200).json(newTodo)
 

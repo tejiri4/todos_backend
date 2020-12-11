@@ -8,7 +8,7 @@ dotenv.config();
 // set default to 3000
 const port = process.env.PORT || 3000; 
 
-mongoose.connect(process.env.DB_URL, {
+mongoose.connect(process.env.MONGO_DB_URL, {
   useNewUrlParser: true,
   useUnifiedTopology: true
 }).then(() => app.listen(port, () => console.log('App listerning on port ' + port)))
