@@ -4,7 +4,7 @@ export default schema => (req, res, next)=> {
   // checks if error exist in request object
   if (error) {
     return res.status(400).json({
-      error: error.details.map((e) => e.message.replace(/['"]/g, ''))[0]
+      message: error.details.map((e) => e.message.replace(/['"]/g, ''))[0]
     })
   }
 

@@ -62,7 +62,7 @@ describe('task', () => {
       .end(function(err, res) {
         if (err) throw err;
 
-        expect(res.body.error).toEqual(messages.taskNotFound)
+        expect(res.body.message).toEqual(messages.taskNotFound)
         done()
       });
   });
@@ -119,7 +119,7 @@ describe('task', () => {
       .end(function(err, res) {
         if (err) throw err;
 
-        expect(res.body.error).toEqual(messages.taskNotFound)
+        expect(res.body.message).toEqual(messages.taskNotFound)
         done()
       });
   });
@@ -165,7 +165,7 @@ describe('task', () => {
       .end(function(err, res) {
         if (err) throw err;
 
-        expect(res.body.error).toEqual(messages.taskNotFound)
+        expect(res.body.message).toEqual(messages.taskNotFound)
         done()
       });
   });

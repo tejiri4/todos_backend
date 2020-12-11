@@ -59,7 +59,7 @@ describe('user', () => {
       .end(function(err, res) {
         if (err) throw err;
 
-        expect(res.body.error).toEqual(messages.userNotFound)
+        expect(res.body.message).toEqual(messages.userNotFound)
         done()
       });
   });
@@ -115,7 +115,7 @@ describe('user', () => {
       .end(function(err, res) {
         if (err) throw err;
 
-        expect(res.body.error).toEqual(messages.userNotFound)
+        expect(res.body.message).toEqual(messages.userNotFound)
         done()
       });
   });
@@ -168,7 +168,7 @@ describe('user', () => {
       .end(function(err, res) {
         if (err) throw err;
 
-        expect(res.body.error).toEqual(messages.userNotFound)
+        expect(res.body.message).toEqual(messages.userNotFound)
         done()
       });
   });
