@@ -1,28 +1,27 @@
 import User from "models/user";
+import messages from "utils/messages"
 
 const createUser = async (req, res) => {
   try {
 		const { name } = req.filtered;
 
-    const user = new User({
+		const newUser = await User.create({
 			name
 		});
 
-		const newUser = await user.save();
-
 		return res.status(200).json(newUser)
   } catch(err) {
-    console.log(err);
+		return res.status(500).json({ error: messages.serverError });
   }
 } 
 
 const getUsers = async (req, res) => {
 	try {
-	  const users = await User.find();
+		const users = await User.find();
 
 		return res.status(200).json(users)
   } catch(err) {
-    console.log(err);
+		return res.status(500).json({ error: messages.serverError });
   }
 }
 
@@ -30,11 +29,11 @@ const getUser = async (req, res) => {
 	try {
 		const user = await User.findById(req.filtered.id);
 		
-		if(!user) return res.status(400).json({ errors: ['user not found']});
+		if(!user) return res.status(400).json({ error: messages.userNotFound });
 
 		return res.status(200).json(user)
   } catch(err) {
-    console.log(err.message);
+		return res.status(500).json({ error: messages.serverError });
   }
 }
 
@@ -42,13 +41,13 @@ const deleteUser = async (req, res) => {
 	try {
 		const user = await User.findById(req.filtered.id);
 
-		if(!user) return res.status(400).json({ errors: ['user not found']});
+		if(!user) return res.status(400).json({ error: messages.userNotFound  });
 
 		await user.deleteOne();
 
-		return res.status(200).json({ message: 'User was deleted successfully.'})
+		return res.status(200).json({ message: messages.userDeleted })
   } catch(err) {
-    console.log(err.message);
+		return res.status(500).json({ error: messages.serverError });
   }
 }
 
@@ -56,13 +55,13 @@ const updateUser = async (req, res) => {
 	try {
 		const user = await User.findById(req.filtered.id);
 
-		if(!user) return res.status(400).json({ errors: ['user not found']});
+		if(!user) return res.status(400).json({ error: messages.userNotFound  });
 
 		await user.updateOne({ name: req.filtered.name });
 
-		return res.status(200).json({ message: 'User was updated successfully.'})
+		return res.status(200).json({ message: messages.userUpdated })
   } catch(err) {
-    console.log(err.message);
+		return res.status(500).json({ error: messages.serverError });
   }
 }
 

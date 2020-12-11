@@ -12,8 +12,11 @@
           "db": "./src/db",
           "config": "./src/config",
           "models": "./src/models",
-          "controllers": "./src/controllers"
+          "controllers": "./src/controllers",
+          "utils": "./src/utils",
+          "tests": "./src/tests"
         }
-      }]
+      }],
+      "@babel/plugin-transform-runtime"
     ]
 }
